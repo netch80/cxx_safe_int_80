@@ -7,7 +7,7 @@ OBJS = test_ia_main.o \
 	test_ia_cx_ufit_unsigned.o \
 	test_ia_cx_sfit_signed.o \
 	test_ia_cx_sfit_unsigned.o
-CXXFLAGS = -Wall -W -g -I. -std=c++17
+CXXFLAGS = -Wall -W -g -I. -std=c++17 -I../../include
 WITH_VOLATILE?= 1
 ifneq "$(WITH_VOLATILE)" ""
 CXXFLAGS += -DWITH_VOLATILE
