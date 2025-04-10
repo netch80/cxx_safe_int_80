@@ -15,6 +15,7 @@
 void test_cx_add_signed();
 void test_sr_add_signed();
 void test_cx_div_signed();
+void test_cx_shl_unsigned();
 void test_cx_ufit_signed();
 void test_cx_ufit_unsigned();
 void test_cx_sfit_signed();

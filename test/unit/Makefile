@@ -3,6 +3,7 @@ OBJS = test_ia_main.o \
 	test_ia_cx_add_signed.o \
 	test_ia_sr_add_signed.o \
 	test_ia_cx_div_signed.o \
+	test_ia_cx_shl_unsigned.o \
 	test_ia_cx_ufit_signed.o \
 	test_ia_cx_ufit_unsigned.o \
 	test_ia_cx_sfit_signed.o \

@@ -51,7 +51,7 @@ int main()
   // TODO rem
   // TODO shl
   // TODO test_cx_shl_signed
-  // TODO test_cx_shl_unsigned
+  test_cx_shl_unsigned();
   // TODO test_cf_shl_signed
   // TODO test_cf_shl_unsigned
   test_tr_shl_signed();
