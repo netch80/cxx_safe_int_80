@@ -24,7 +24,7 @@ $(PROG): $(OBJS)
 %.o: %.cxx
 	$(CXX) -o $@ -c $< $(CXXFLAGS) $(CXXOPTS)
 
-*.o: safe_int_arith_80.hxx
+*.o: ../../include/safe_int_arith_80.hxx
 
 clean:
 	rm -f $(PROG) $(OBJS)
