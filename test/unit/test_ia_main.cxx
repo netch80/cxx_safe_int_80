@@ -50,7 +50,7 @@ int main()
   // TODO test_sf_div_unsigned
   // TODO rem
   // TODO shl
-  // TODO test_cx_shl_signed
+  test_cx_shl_signed();
   test_cx_shl_unsigned();
   // TODO test_cf_shl_signed
   // TODO test_cf_shl_unsigned

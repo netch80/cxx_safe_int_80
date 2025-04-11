@@ -394,8 +394,24 @@ namespace sia80 {
     // Notice: integral promotion can widen the value to width of TR.
     // We check against TR, not T1.
     using TR = decltype(v1 << shcnt);
-    if (SIA80_UNLIKELY(shcnt < 0 || shcnt >= std::numeric_limits<TR>::digits)) {
-      throw std::out_of_range("cx_shl shift count");
+    if (SIA80_UNLIKELY(shcnt < 0)) {
+      throw std::out_of_range("cx_shl shift count negative");
+    }
+    if (SIA80_UNLIKELY(shcnt > std::numeric_limits<TR>::digits)) {
+      throw std::out_of_range("cx_shl shift count too big");
+    }
+    if constexpr(std::is_signed<T1>::value) {
+      // NB for int32_t there would be digits == 31
+      if (SIA80_UNLIKELY(shcnt == std::numeric_limits<TR>::digits
+            && (v1 != 0 && v1 != -1)))
+      {
+        throw std::out_of_range("cx_shl shift count too big");
+      }
+    }
+    else { // T1 is unsigned
+      if (SIA80_UNLIKELY(shcnt == std::numeric_limits<TR>::digits)) {
+        throw std::out_of_range("cx_shl shift count too big");
+      }
     }
     // Criterion for the check: value correctly shifts back to
     // the original one. But the first shift left shall be done
