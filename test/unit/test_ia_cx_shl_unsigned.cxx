@@ -55,6 +55,10 @@ void test_cx_shl_unsigned_int()
 {
   const char *exc_label = "cx_shl unsigned int";
   constexpr unsigned imax = std::numeric_limits<unsigned>::max();
+  if (std::numeric_limits<unsigned>::digits != 32) {
+    std::cerr << exc_label << ": not 32 bits, tests shall be remade\n";
+    throw std::logic_error("int bits");
+  }
   want_ok(unsigned(0), unsigned(0), unsigned(0), exc_label);
   want_ok(unsigned(0), unsigned(1), unsigned(0), exc_label);
   want_ok(unsigned(0), unsigned(16), unsigned(0), exc_label);

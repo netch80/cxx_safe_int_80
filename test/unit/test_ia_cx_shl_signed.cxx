@@ -54,13 +54,18 @@ static void want_fail(T1 i_arg1, T2 i_arg2,
 void test_cx_shl_signed_int()
 {
   const char *exc_label = "cx_shl signed int";
+  if (std::numeric_limits<int>::digits != 31) {
+    std::cerr << exc_label << ": not 32 bits, tests shall be remade\n";
+    throw std::logic_error("int bits");
+  }
   want_ok(int(0), int(0), int(0), exc_label);
   want_ok(int(0), int(1), int(0), exc_label);
   want_ok(int(0), int(16), int(0), exc_label);
   want_ok(int(0), int(30), int(0), exc_label);
   want_ok(int(0), int(31), int(0), exc_label);
-  // NB Shift for 31 bit is treated impossible, this is signed.
+  want_ok(int(1), int(1), int(2), exc_label);
   want_ok(int(1), int(30), int(0x40000000), exc_label);
+  // NB Shift for 31 bit is treated impossible, this is signed.
   want_fail(int(1), int(31), exc_label);
   want_ok(int(0x40000000), int(0), int(0x40000000), exc_label);
   want_fail(int(0x40000000), int(1), exc_label);
